@@ -1,11 +1,11 @@
 {
   "name": "synapsegrid",
   "version": "3.0.0",
-  "description": "SynapseGrid — Interactive Dynamic Task & Workflow Intelligence Platform",
+  "description": "SynapseGrid \u2014 Interactive Dynamic Task & Workflow Intelligence Platform",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "start": "node init && node server/server.js",
+    "dev": "node init && node server/server.js"
   },
   "keywords": [],
   "author": "",
