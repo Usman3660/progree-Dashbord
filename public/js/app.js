@@ -34,9 +34,6 @@ const elements = {
   viewTabs: document.querySelectorAll('.view-tab-btn'),
   themeToggleBtn: document.getElementById('theme-toggle-btn'),
   createTaskBtn: document.getElementById('btn-create-task'),
-  resetDataBtn: document.getElementById('btn-reset-data'),
-  exportJsonBtn: document.getElementById('btn-export-json'),
-  exportCsvBtn: document.getElementById('btn-export-csv'),
   
   // Views Containers
   kanbanView: document.getElementById('view-kanban'),
@@ -1018,35 +1015,6 @@ const setupEventListeners = () => {
       fetchTasks();
     });
   });
-
-  // Reset Demo Data
-  if (elements.resetDataBtn) {
-    elements.resetDataBtn.addEventListener('click', async () => {
-      if (!confirm('Reset database to default demo tasks? Any custom tasks will be overwritten.')) return;
-      try {
-        await window.api.resetData();
-        showToast('Database reset to initial demo tasks.', 'success');
-        await refreshDashboard();
-      } catch (err) {
-        showToast('Failed to reset database.', 'error');
-      }
-    });
-  }
-
-  // Export Data Buttons
-  if (elements.exportJsonBtn) {
-    elements.exportJsonBtn.addEventListener('click', () => {
-      window.open(window.api.getExportUrl('json'), '_blank');
-      showToast('Exporting JSON dataset...', 'info', 2000);
-    });
-  }
-
-  if (elements.exportCsvBtn) {
-    elements.exportCsvBtn.addEventListener('click', () => {
-      window.open(window.api.getExportUrl('csv'), '_blank');
-      showToast('Exporting CSV dataset...', 'info', 2000);
-    });
-  }
 
   // Modal Close buttons
   document.querySelectorAll('[data-close-modal]').forEach(btn => {
